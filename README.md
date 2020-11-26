@@ -4,7 +4,7 @@ This software requiers 64bit Python version=>3.5
 
 ## Licence information
 
-Please read "COPYING" for the software licence. The image included in this software (a.tif) is a picture of the moon and is also under [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/legalcode), It was originally captured by me.
+Please read "COPYING" for the software licence. The image included in this software (a.tif) is a picture of the moon and is under [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/legalcode), It was originally captured by me.
 
 
 ### Libraries required and their licences:
