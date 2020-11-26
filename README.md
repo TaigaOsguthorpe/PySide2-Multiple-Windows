@@ -3,7 +3,7 @@ Multiple windows (child windows) example using PySide2
 This software requiers 64bit Python version=>3.5
 
 ## How to run
-simple type `python3 main.py` or `python main.py` into a command line (Command Prompt in Windows)  
+Simply type `python3 main.py` or `python main.py` into a command line (Command Prompt in Windows)  
 
 <br>
 
