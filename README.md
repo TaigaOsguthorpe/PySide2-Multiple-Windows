@@ -9,7 +9,7 @@ Simply type `python3 main.py` or `python main.py` into a command line (Command P
 
 ## Licence information
 
-Please read "COPYING" for the software licence. The image included in this software (a.tif) is a picture of the moon and is under [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/legalcode), It was originally captured by me.
+Please read "COPYING" for the software licence. The image included in this software (a.tif) is a picture of the moon and is under [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/legalcode), It was originally captured by me Taiga Osguthorpe.
 
 
 ### Libraries required and their licences:
