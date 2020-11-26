@@ -14,6 +14,7 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        # When the "new_window_button" is clicked fire off the function "new_image_window"
         self.ui.new_window_button.clicked.connect(self.new_image_window)
 
         self.window_list = []
@@ -39,9 +40,16 @@ class MainWindow(QMainWindow):
 
     def new_image_window(self):
         print("new_image_window: START")
+        # Clean the window_list to free up a tiny bit of memory that does not need to be used.
         self.clean()
+
+        # Create the new window itself via the ImageWindow class
         w = ImageWindow(self)
+
+        # Keep the window in reference so that Garbadge Collection does not snap it up and remove it.
         self.window_list.append({"mem_adress": w, "del": False})
+
+        # Render the new window on screen
         w.show()
         print("new_image_window: END")
 
@@ -49,11 +57,19 @@ class MainWindow(QMainWindow):
 
 class ImageWindow(QMainWindow):
     def __init__(self, parent):
+        # inherit all the things a QMainWindow can do.
+        # This in its current form also has the side effect of the main window not truly being a main window meaning that all windows created (this one)
+        # from it act as independant windows and will not also close if the main window is closed.
         super(ImageWindow, self).__init__()
+
+        # WA_DeleteOnClose means that this window's memory shall be removed when it is exited even if the main window of our gui is not.
         self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
+
         self.ui = Ui_ImageWindow()
         self.ui.setupUi(self)
 
+        # (currently a placeholder of doing it in a differnet way)
+        # reference our parent window to be able to acess the list to remove the one reference keeping this window alive and safe from Garbadge Collection
         self.parent = parent
 
         # Image setup
@@ -61,6 +77,7 @@ class ImageWindow(QMainWindow):
         self.ui.image_label.setPixmap(QPixmap(file).scaled(1024, 1024, QtCore.Qt.KeepAspectRatio))
 
     def closeEvent(self, event):
+        # Capture the close event and remove ourself from the parent's window_list
         print("closEvent detected")
         print(self.parent.window_list)
         for item in self.parent.window_list:
@@ -78,9 +95,11 @@ class ImageWindow(QMainWindow):
 
 
 if __name__ == "__main__":
+    # Run the aplication
     app = QApplication(sys.argv)
 
     window = MainWindow()
     window.show()
 
+    # Start the main loop of the program
     sys.exit(app.exec_())
