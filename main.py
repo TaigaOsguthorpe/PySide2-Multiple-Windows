@@ -53,13 +53,20 @@ class MainWindow(QMainWindow):
         w.show()
         print("new_image_window: END")
 
+    def closeEvent(self, event):
+        # Capture the close event of the main window and quit the aplication, forcing all other windows to close with it and free up their used memory.
+        # This event capture ("closeEvent") can be removed and allow each new window to act semi independantly but this could cause unknown errors to ocour.
+        app.quit()
+
 
 
 class ImageWindow(QMainWindow):
+#class ImageWindow(MainWindow):
     def __init__(self, parent):
         # inherit all the things a QMainWindow can do.
         # This in its current form also has the side effect of the main window not truly being a main window meaning that all windows created (this one)
-        # from it act as independant windows and will not also close if the main window is closed.
+        # from it act as independant windows, this has its ups and downs but for now we are going to ignore it as you will see no differnece right now,
+        # but just keep this in mind.
         super(ImageWindow, self).__init__()
 
         # WA_DeleteOnClose means that this window's memory shall be removed when it is exited even if the main window of our gui is not.
